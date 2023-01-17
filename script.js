@@ -112,6 +112,7 @@ resetButton.addEventListener('click', function () {
   const winnerMessage = document.querySelector('h2');
   winnerMessage.remove();
   gameContainer.classList.remove('noClick');
+  clickedCards.length = 0;
   matchedCards.length = 0;
 });
 
