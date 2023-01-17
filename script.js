@@ -21,18 +21,18 @@ const COLORS = [
 // it returns the same array with values shuffled
 // it is based on an algorithm called Fisher Yates if you want to research more
 function shuffle(array) {
-  let counter = array.length;
-  // While there are elements in the array
-  while (counter > 0) {
-    // Pick a random index
-    let index = Math.floor(Math.random() * counter);
-    // Decrease counter by 1
-    counter--;
-    // And swap the last element with it
-    let temp = array[counter];
-    array[counter] = array[index];
-    array[index] = temp;
-  }
+  // let counter = array.length;
+  // // While there are elements in the array
+  // while (counter > 0) {
+  //   // Pick a random index
+  //   let index = Math.floor(Math.random() * counter);
+  //   // Decrease counter by 1
+  //   counter--;
+  //   // And swap the last element with it
+  //   let temp = array[counter];
+  //   array[counter] = array[index];
+  //   array[index] = temp;
+  // }
   return array;
 }
 
@@ -110,8 +110,16 @@ resetButton.addEventListener('click', function () {
   }
   createDivsForColors(shuffle(COLORS));
   const winnerMessage = document.querySelector('h2');
-  winnerMessage.remove();
-  gameContainer.classList.remove('noClick');
+  if (winnerMessage) winnerMessage.remove();
+  const resetting = document.createElement('h3');
+  resetting.innerText = 'Resetting...';
+  document.body.append(resetting);
+  setTimeout(function () {
+    const resetMessage = document.querySelector('h3');
+    resetMessage.remove();
+    gameContainer.classList.remove('noClick');
+  }, 1000);
+
   clickedCards.length = 0;
   matchedCards.length = 0;
 });
